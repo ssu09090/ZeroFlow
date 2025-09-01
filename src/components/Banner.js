@@ -7,6 +7,9 @@ const Banner = () => {
   const storyTwoRef = useRef(null);
   const storyImgRef = useRef(null);
   const hashtagRef = useRef(null);
+
+  gsap.registerPlugin(ScrollTrigger);
+
   const gsapInit = () => {
     const tl = gsap.timeline();
 

@@ -12,7 +12,6 @@ import Banner from "./components/Banner";
 import Cart from "./components/Cart";
 import SlideCarousel from "./components/SlideCarousel";
 import DetailPage from "./components/DetailPage";
-gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
   //장바구니에 리스트 추가
@@ -63,6 +62,8 @@ const App = () => {
       )
     );
   };
+
+
   return (
     <HashRouter>
       <Routes>
@@ -74,8 +75,8 @@ const App = () => {
                 <Banner />
                 <BrandIntro />
                 <div className="pc-only">
-                <Goods />
-                <SlideCarousel/>
+                  <Goods />
+                  <SlideCarousel />
                 </div>
                 <CardList onAddCart={handleAddToCart} />
                 <Project />
