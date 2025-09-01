@@ -1,50 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 const Banner = () => {
-  //배너 글씨 스크롤 처리
   const storyOneRef = useRef(null);
   const storyTwoRef = useRef(null);
   const storyImgRef = useRef(null);
   const hashtagRef = useRef(null);
-  const gsapInit = () => {
-    const tl = gsap.timeline();
 
-    tl.fromTo(
-      storyOneRef.current,
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1 },
-      "-=0.5"
-    )
-      .fromTo(
-        storyTwoRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1 },
-        "-=0.5"
-      )
-      .fromTo(
-        storyImgRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1 },
-        "-=0.5"
-      )
-      .fromTo(
-        hashtagRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1 },
-        "-=0.5"
-      );
-  };
-  useEffect(() => {
-    gsapInit();
-    const handleResize = () => {
-      window.location.reload();
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { duration: 1, ease: "power2.out" } });
+      tl.fromTo(storyOneRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
+        .fromTo(storyTwoRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.5")
+        .fromTo(storyImgRef.current,  { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.5")
+        .fromTo(hashtagRef.current,   { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.5");
+    });
+
+    return () => ctx.revert(); 
   }, []);
+
 
   return (
     <div id="banner">
