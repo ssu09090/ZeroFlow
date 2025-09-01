@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -39,6 +39,9 @@ const Banner = () => {
         "-=0.5"
       );
   };
+  useEffect(() => {
+    gsapInit();
+  }, []);
 
   return (
     <div id="banner">
