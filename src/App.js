@@ -1,8 +1,6 @@
 import "./App.scss";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BrandIntro from "./components/BrandIntro";
 import CardList from "./components/CardList";
 import Goods from "./components/Goods";
@@ -12,6 +10,7 @@ import Banner from "./components/Banner";
 import Cart from "./components/Cart";
 import SlideCarousel from "./components/SlideCarousel";
 import DetailPage from "./components/DetailPage";
+
 
 const App = () => {
   //장바구니에 리스트 추가
@@ -62,7 +61,6 @@ const App = () => {
       )
     );
   };
-
 
   return (
     <HashRouter>
